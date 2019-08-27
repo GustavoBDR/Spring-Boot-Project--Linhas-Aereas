@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<style>
+		.titulo {
+		    margin-left: 80px;
+		    margin-top: -20px;
+		}
+		.container{
+			margin-bottom: 50px;
+		}
+		#cadastrar {
+			margin-bottom: -10px;
+		}
+		#aeronave_id {
+			margin-bottom: 20px;
+		}					
+	</style> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lista de Rotas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="page-header">
+  <h2 class="titulo">Cielo Linhas Aéreas - Lista de Rotas Cadastradas</h2>      
+</div>
+<div class="container">
+	<div class="jumbotron" align="center" style="margin-top: 20px;">
+	    <table class="table table-hover">
+	        <thead>
+	        <tr>
+	            <th>ID Rota </th>
+	            <th>Cidade de Origem </th>
+	            <th>Cidade de Origem </th>
+	            <th>Aeronave Associada (ID)</th>
+	        </tr>
+	        </thead>
+	        <tr th:each="rota : ${rotas}">
+	            <td> <span th:text="${rota.id}"></span> </td>
+	            <td> <span th:text="${rota.origem}"></span> </td>
+	            <td> <span th:text="${rota.destino}"></span> </td>
+	            <td> <span th:text="${rota.aeronave_id}"></span> </td>
+	        </tr>
+	    </table>
+	</div>
+    <h4 id="cadastrar"><strong>Cadastrar nova aeronave</strong></h4>
+	<hr></hr>
+	<form action="salvarrota" method="post">
+	    <div class="form-group">
+	        <label for="origem">Cidade de Origem</label>
+	        <input type="text" class="form-control" id="origem" name="origem" placeholder="Cidade Origem" />
+	    </div>
+	    <div class="form-group">
+	        <label for="destino">Cidade de Destino</label>
+	        <input type="text" class="form-control" id="destino" name="destino" placeholder="Cidade Destino" />
+	    </div>
+	    <div class="form-group">
+		    <select id="aeronave_id" name="aeronave_id" class="form-control" th:field="${aeronaves}">
+			    <option th:each="aeronave : ${aeronaves}" th:value="${aeronave.id}" th:text="${aeronave.modelo}">Wireframe</option>
+		    </select>	 
+	    </div>      
+	    <button type="submit" class="btn btn-success">Cadastrar</button>
+	</form>	
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

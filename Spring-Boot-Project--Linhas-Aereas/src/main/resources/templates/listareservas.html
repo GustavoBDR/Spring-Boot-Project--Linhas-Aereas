@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<style>
+		.titulo {
+		    margin-left: 80px;
+		    margin-top: -20px;
+		}			
+	</style> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lista de Reservas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="page-header">
+  <h2 class="titulo">Cielo Linhas Aéreas - Lista de Reservas Cadastradas</h2>      
+</div>
+<div class="container">
+	<div class="jumbotron" align="center" style="margin-top: 20px;">
+	    <table class="table table-hover">
+	        <thead>
+	        <tr>
+	            <th>ID Reserva </th>
+	            <th>CPF Passageiro </th>
+	            <th>Rota (ID) </th>
+	            <th>Poltrona </th>
+	        </tr>
+	        </thead>
+	        <tr th:each="reserva : ${reservas}">
+	            <td> <span th:text="${reserva.id}"></span> </td>
+	            <td> <span th:text="${reserva.passageiro_cpf}"></span> </td>
+	            <td> <span th:text="${reserva.rota_id}"></span> </td>
+	            <td> <span th:text="${reserva.poltrona}"></span> </td>
+	        </tr>
+	    </table>
+	</div>    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
